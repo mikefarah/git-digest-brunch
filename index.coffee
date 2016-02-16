@@ -7,9 +7,10 @@ module.exports = class GitDigest
   brunchPlugin: true
 
   constructor: (@config) ->
+    @options = @config?.plugins?.git_digest ? {}
 
   onCompile: ->
-    return unless @config.optimize
+    return unless @config.optimize || @options.always_run
     @execute 'git rev-parse --short HEAD', @replace
 
   execute: (command, callback) ->
@@ -22,3 +23,4 @@ module.exports = class GitDigest
       paths: [@config.paths.public]
       recursive: true
       silent: true
+      async: @options.async

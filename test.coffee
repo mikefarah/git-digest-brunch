@@ -26,6 +26,13 @@ describe 'Plugin', ->
     @plugin.onCompile()
     assert.ok !execute.called
 
+  it 'should run if `always_run` option is true', ->
+    execute = sinon.stub @plugin, 'execute'
+    @plugin.config.optimize = false
+    @plugin.options.always_run = true
+    @plugin.onCompile()
+    assert.ok execute.called
+
   it 'should use git sha as replace value', ->
     execute = sinon.stub @plugin, 'execute', (..., callback) -> callback('abcdef')
     replace = sinon.stub @plugin, 'replace'
