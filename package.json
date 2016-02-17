@@ -6,7 +6,7 @@
   "homepage": "https://github.com/meleyal/git-digest-brunch",
   "repository": {
     "type": "git",
-    "url": "git@github.com:meleyal/git-digest-brunch.git"
+    "url": "git@github.com:mikefarah/git-digest-brunch.git"
   },
   "scripts": {
     "test": "node_modules/.bin/mocha test.coffee --watch --compilers coffee:coffee-script/register"
